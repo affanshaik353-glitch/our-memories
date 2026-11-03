@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin · OUR MEMORIES</title>
+  <link rel="stylesheet" href="./admin.css">
+</head>
+<body>
+  <div id="loginScreen" class="login-screen">
+    <form id="loginForm" class="login-card">
+      <a href="./index.html">← Back to memories</a>
+      <div class="lock">♡</div>
+      <h1>Admin Gateway</h1>
+      <p>Manage the moments in OUR MEMORIES.</p>
+      <label>Admin ID<input name="admin_id" autocomplete="username" required></label>
+      <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+      <button class="primary" type="submit">Unlock dashboard</button>
+      <p id="loginError" class="error"></p>
+    </form>
+  </div>
+
+  <div id="dashboard" class="dashboard hidden">
+    <aside>
+      <a class="brand" href="./index.html">OUR MEMORIES ❤️</a>
+      <button class="side-link active" data-panel="photos">Photos</button>
+      <button class="side-link" data-panel="albums">Albums</button>
+      <button class="side-link" data-panel="theme">Theme</button>
+      <button id="logoutButton" class="logout">Log out</button>
+    </aside>
+    <main>
+      <header><div><p>Admin dashboard</p><h1>Your memory world</h1></div><a href="./index.html" target="_blank">View website ↗</a></header>
+      <section id="photosPanel" class="panel active">
+        <div class="panel-heading"><div><h2>Add a memory</h2><p>Upload photographs with a title and story.</p></div></div>
+        <form id="uploadForm" class="upload-card">
+          <label class="image-picker"><input id="photoFile" name="file" type="file" accept="image/jpeg,image/png,image/webp" required><img id="uploadPreview" alt=""><span>Choose a photograph</span></label>
+          <div class="upload-fields">
+            <label>Title<input name="title" maxlength="100" required></label>
+            <label>Caption<textarea name="caption" maxlength="500"></textarea></label>
+            <label>Album<select id="uploadAlbum" name="album_id"><option value="">No album</option></select></label>
+            <button class="primary" type="submit">Upload memory</button>
+          </div>
+        </form>
+        <div class="panel-heading list-heading"><div><h2>Manage photographs</h2></div><span id="adminPhotoCount"></span></div>
+        <div id="adminPhotoGrid" class="admin-grid"></div>
+      </section>
+
+      <section id="albumsPanel" class="panel">
+        <div class="panel-heading"><div><h2>Albums</h2><p>Create folders for special moments.</p></div></div>
+        <form id="albumForm" class="inline-form"><input name="name" maxlength="80" placeholder="Album name" required><button class="primary">Create album</button></form>
+        <div id="albumList" class="album-list"></div>
+      </section>
+
+      <section id="themePanel" class="panel">
+        <div class="panel-heading"><div><h2>Make it yours</h2><p>These changes appear for every visitor.</p></div></div>
+        <form id="themeForm" class="theme-form">
+          <label>Theme name<input name="theme_name" maxlength="30" value="love"></label>
+          <label>Background colour<input name="background" type="color" value="#fff0f7"></label>
+          <label>Accent colour<input name="accent" type="color" value="#c86b98"></label>
+          <label>Font<select name="font_family"><option>Nunito</option><option>Georgia</option><option>Verdana</option><option>Trebuchet MS</option><option>Comic Sans MS</option></select></label>
+          <label>Custom background image URL<input name="background_image" type="url" placeholder="https://..."></label>
+          <label>Or upload background image<input id="backgroundFile" type="file" accept="image/jpeg,image/png,image/webp"></label>
+          <button class="primary" type="submit">Save theme</button>
+        </form>
+      </section>
+    </main>
+  </div>
+  <div id="adminToast" role="status"></div>
+  <script src="./config.js"></script>
+  <script src="./admin.js"></script>
+</body>
+</html>
