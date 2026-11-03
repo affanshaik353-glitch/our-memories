@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff0f7">
+  <title>OUR MEMORIES ❤️</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="sky" aria-hidden="true">
+    <span class="heart">❤</span><span class="heart">♥</span><span class="heart">❤</span>
+    <span class="star">✦</span><span class="star">★</span><span class="butterfly">🦋</span>
+  </div>
+  <header class="topbar">
+    <a class="brand" href="#welcome">OUR MEMORIES <span>❤️</span></a>
+    <nav>
+      <button class="nav-link active" data-view="welcome">Home</button>
+      <button class="nav-link" data-view="gallery">Gallery</button>
+      <a class="admin-link" href="./admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="welcome" class="welcome view active">
+      <div class="welcome-card">
+        <div class="album-animation" aria-hidden="true">
+          <div class="mini-photo"></div><div class="mini-photo second"></div><div class="mini-photo third"></div>
+        </div>
+        <p class="eyebrow">A collection of our happiest moments</p>
+        <h1>WELCOME TO OUR MEMORIES <span>❤️</span></h1>
+        <h2>Every picture tells a story, every moment becomes a memory.</h2>
+        <p>Welcome to our little world of happiness, love, friendship, and unforgettable memories. Explore our beautiful moments together.</p>
+        <button class="primary explore-button" data-view="gallery">EXPLORE OUR MEMORIES ❤️</button>
+      </div>
+      <div class="scroll-cue">Scroll into our story <span>↓</span></div>
+    </section>
+
+    <section id="gallery" class="gallery-page view">
+      <div class="gallery-heading">
+        <div><p class="eyebrow">Saved with love</p><h2>Our Memory Gallery</h2></div>
+        <div class="visitor-form">
+          <input id="visitorName" maxlength="40" placeholder="Your display name" aria-label="Your display name">
+          <button id="saveName">Save name</button>
+        </div>
+      </div>
+      <div class="controls">
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search by title..."></label>
+        <select id="albumFilter" aria-label="Filter by album"><option value="">All albums</option></select>
+      </div>
+      <div id="stats" class="memory-stats"></div>
+      <section id="favoritesSection" class="collection-section">
+        <div class="section-title"><h3>Favourite memories</h3><span>♡</span></div>
+        <div id="favoritesGrid" class="photo-grid"></div>
+      </section>
+      <section class="collection-section">
+        <div class="section-title"><h3>Recently uploaded</h3><span>✦</span></div>
+        <div id="recentGrid" class="photo-grid"></div>
+      </section>
+      <section class="collection-section">
+        <div class="section-title"><h3>All memories</h3><span id="photoCount"></span></div>
+        <div id="galleryGrid" class="photo-grid"></div>
+      </section>
+      <div id="emptyGallery" class="empty-state hidden">
+        <div>📷</div><h3>No memories here yet</h3><p>Our next beautiful moment is waiting to be added.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <button id="lightboxClose" class="lightbox-close" aria-label="Close">×</button>
+    <button id="previousPhoto" class="lightbox-arrow previous" aria-label="Previous photograph">‹</button>
+    <div class="lightbox-content">
+      <div class="lightbox-photo-wrap"><img id="lightboxImage" alt=""></div>
+      <aside class="lightbox-details">
+        <h2 id="lightboxTitle"></h2>
+        <p id="lightboxCaption"></p>
+        <p id="lightboxDate" class="photo-date"></p>
+        <div class="actions">
+          <button id="lightboxLike">♡ <span></span></button>
+          <span id="lightboxCommentCount">💬 0</span>
+        </div>
+        <div id="lightboxComments" class="comments"></div>
+        <form id="commentForm">
+          <input id="commentName" maxlength="40" placeholder="Your name" required>
+          <textarea id="commentBody" maxlength="500" placeholder="Leave a sweet memory..." required></textarea>
+          <button class="primary" type="submit">Post comment</button>
+        </form>
+      </aside>
+    </div>
+    <button id="nextPhoto" class="lightbox-arrow next" aria-label="Next photograph">›</button>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="loader" class="loader"><div></div></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./config.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
